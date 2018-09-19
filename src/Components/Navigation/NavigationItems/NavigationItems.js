@@ -3,10 +3,11 @@ import classes from './NavigationItems.css'
 import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = (props) => (
-    <ul className={classes.navigationItems}>
+    <ul className={classes.NavigationItems}>
+        <NavigationItem link="/">Products</NavigationItem>
         <NavigationItem link="/about">About</NavigationItem>
         <NavigationItem link="/contact">Contact</NavigationItem>
-        <NavigationItem link="cart">Cart</NavigationItem>
+        <NavigationItem link="/cart">Cart</NavigationItem>
     </ul>
 );
 
