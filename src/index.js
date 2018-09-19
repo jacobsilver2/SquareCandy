@@ -15,9 +15,10 @@ import registerServiceWorker from './registerServiceWorker';
 
 //! Reducers
 import productsReducer from './store/reducers/products';
+import authReducer from './store/reducers/auth';
 
 //? Combine Reducers
-const rootReducer = combineReducers({ products: productsReducer });
+const rootReducer = combineReducers({ products: productsReducer, auth: authReducer });
 
 //? Setup Redux Devtools
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
