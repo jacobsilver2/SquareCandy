@@ -50,10 +50,10 @@ class AddProduct extends Component {
       touched: false,
       },
       image: {
-        elementType: 'input',
+        elementType: 'image',
         elementConfig: {
           type: 'text',
-          placeholder: 'IMAGE'
+          placeholder: 'Upload an Image'
         },
       value: '',
       validation: {

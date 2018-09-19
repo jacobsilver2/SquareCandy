@@ -6,7 +6,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 const header = (props) => (
     <header className={classes.Header}>
         <nav>
-            <NavigationItems />
+            <NavigationItems isAuthenticated={props.isAuth}/>
         </nav>
     </header>
 );

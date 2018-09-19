@@ -10,7 +10,7 @@ class Layout extends Component {
     render() {
         return (
             <Aux>
-                <Header />
+                <Header isAuth={this.props.isAuthenticated} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
@@ -19,5 +19,11 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null //if state.auth.token is not null, the user is authenticated.
+    }
+}
+
+export default connect(mapStateToProps)(Layout);
 

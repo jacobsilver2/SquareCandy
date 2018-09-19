@@ -8,7 +8,18 @@ const navigationItems = (props) => (
         <NavigationItem link="/about">About</NavigationItem>
         <NavigationItem link="/contact">Contact</NavigationItem>
         <NavigationItem link="/cart">Cart</NavigationItem>
-        <NavigationItem link="/add-product">Add Product</NavigationItem>
+
+        {/* only show the add show link if User is authenticated */}
+        { props.isAuthenticated 
+            ? <NavigationItem link="/add-product">Add Product</NavigationItem> 
+            : null 
+        } 
+
+        {/* //if user is NOT authenticated, then show LOGIN, otherwise show LOGOUT */}
+        { props.isAuthenticated 
+            ? <NavigationItem link="/logout">Logout</NavigationItem>
+            : null
+        }  
     </ul>
 );
 

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 //components
-import Button from '../../components/UI/Button/Button';
-import Input from '../../components/UI/Input/Input';
+import Button from '../../Components/UI/Button/Button';
+import Input from '../../Components/UI/Input/Input';
 import Spinner from '../../Components/UI/Spinner/Spinner'
 //utility
 import { updateObject, checkValidity } from '../../shared/utility';

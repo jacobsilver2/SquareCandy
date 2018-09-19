@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Input.css';
+import FileField from '../../UI/FileField/FileField';
 
 const Input = (props) => {
   let inputElement = null;
@@ -23,6 +24,11 @@ const Input = (props) => {
         onChange={props.changed}
         />;
       break;
+    case ('image'):
+        inputElement = <FileField 
+            label={props.elementConfig.placeholder}
+        />
+        break;  
     case ('select'):
       inputElement = (
         <select 

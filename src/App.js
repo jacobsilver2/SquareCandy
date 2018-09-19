@@ -11,6 +11,7 @@ import Contact from './Components/Contact/Contact';
 import Cart from './Components/Cart/Cart';
 import AddProduct from './Components/Products/AddProduct/AddProduct'
 import Auth from './Containers/Auth/Auth'
+import Logout from './Containers/Auth/Logout/Logout'
 
 //! Actions
 import * as actions from './store/actions/index';
@@ -38,6 +39,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/" exact component={Products}/>
+          <Route path="/logout" component={Logout}/>
           <Route path="/auth" component={Auth}/>
           <Route path="/about" component={About}/>
           <Route path="/contact" component={Contact}/>
