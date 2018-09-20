@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './previewPicture.css';
 
 const previewPicture = ({pictureUrl}) => {
     return (
-        <img className="img-fluid mb-2 mt-2" src={pictureUrl}/>
+        <img className={classes.img} src={pictureUrl} alt=""/>
     );
 }
 

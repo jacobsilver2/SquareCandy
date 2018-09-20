@@ -52,7 +52,7 @@ class AddProduct extends Component {
       image: {
         elementType: 'image',
         elementConfig: {
-          type: 'text',
+          type: 'image',
           placeholder: 'Upload an Image'
         },
       value: '',
@@ -77,6 +77,17 @@ class AddProduct extends Component {
     this.setState({controls: updatedControls})
   }
 
+  picAddedHandler = (pictureURL) => {
+    const updatedControls = updateObject(this.state.controls, {
+      image: updateObject(this.state.controls["image"], {
+        value: pictureURL,
+        valid: true,
+        touched: true
+      })
+    });
+    this.setState({ controls: updatedControls})
+  }
+
   submitHandler = (event) => {
     event.preventDefault();
     const product = {
@@ -85,6 +96,7 @@ class AddProduct extends Component {
       soldOut: this.state.controls.soldOut.value,
       image: this.state.controls.image.value,
     }
+    console.log(product.image)
     this.props.onAddProduct(product, this.props.token);
     this.setState({added: true})
   }
@@ -115,6 +127,7 @@ class AddProduct extends Component {
         shouldValidate={formElement.config.validation}
         touched={formElement.config.touched}
         changed={(event) => this.inputChangedHandler(event, formElement.id)}
+        picAdded={(url) => this.picAddedHandler(url)}
       />
     ))
 
@@ -131,11 +144,11 @@ class AddProduct extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     token: state.auth.token
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -143,4 +156,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);

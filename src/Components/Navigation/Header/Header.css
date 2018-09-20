@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,5 +16,8 @@
 .Header nav {
     height: 100%;
 }
+
+
+
 
 

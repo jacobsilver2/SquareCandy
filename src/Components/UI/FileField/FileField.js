@@ -7,7 +7,7 @@ class FileField extends Component {
         pictureURL: null
      }
 
-    displayPicture(event) {
+    displayPicture = (event) => {
         let reader  = new FileReader();
         let file = event.target.files[0];
         reader.onloadend = () => {
@@ -15,6 +15,7 @@ class FileField extends Component {
                 picture: file,
                 pictureURL: reader.result
             });
+            this.props.onChange(this.state.pictureURL)
         }
         reader.readAsDataURL(file);
     }
@@ -33,7 +34,7 @@ class FileField extends Component {
                         />
                     </div>
                 </div>
-                        <PreviewPicture pictureUrl={this.state.pictureURL}/>
+                <PreviewPicture pictureUrl={this.state.pictureURL}/>
             </div>
         );
     }

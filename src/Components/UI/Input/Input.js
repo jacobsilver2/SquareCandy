@@ -27,6 +27,8 @@ const Input = (props) => {
     case ('image'):
         inputElement = <FileField 
             label={props.elementConfig.placeholder}
+            value={props.value} {...props.elementConfig}
+            onChange={props.picAdded}
         />
         break;  
     case ('select'):

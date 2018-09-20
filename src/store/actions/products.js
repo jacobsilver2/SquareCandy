@@ -1,5 +1,6 @@
 import axios from '../../axios-firebase';
 import * as actionTypes from './actionTypes';
+// import { storage } from '../../firebase';
 
 export const getProductsStart = () => {
     return {
@@ -72,6 +73,7 @@ export const addProduct = (productData, token) => {
         .catch(error => {
             dispatch(addProductFail(error))
         })
+
     }
 }
 
