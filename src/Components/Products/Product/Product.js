@@ -6,7 +6,8 @@ const product = ({name, description, image}) => {
         backgroundImage: 'url(' + image + ')',
     };
     return (
-        <article className={classes.card}>
+        <div className={classes.card}>
+        <article>
             <header style={style} id={image} className={classes.cardheader}>
             </header>
             <div className={classes.cardbody}>
@@ -15,6 +16,7 @@ const product = ({name, description, image}) => {
                 <Button btnType="Success">Add To Cart</Button>
             </div>
         </article>
+        </div>
     )
 };
 
