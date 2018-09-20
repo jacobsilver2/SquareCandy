@@ -8,6 +8,7 @@ const navigationItems = (props) => (
         <NavigationItem link="/about">About</NavigationItem>
         <NavigationItem link="/contact">Contact</NavigationItem>
         <NavigationItem link="/cart">Cart</NavigationItem>
+        <NavigationItem link="/checkout">Checkout</NavigationItem>
 
         {/* only show the add show link if User is authenticated */}
         { props.isAuthenticated 

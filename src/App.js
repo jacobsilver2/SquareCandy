@@ -9,6 +9,7 @@ import Layout from './hoc/Layout/Layout';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
 import Cart from './Components/Cart/Cart';
+import CheckoutPage from './Components/Stripe/CheckoutPage/CheckoutPage'
 import AddProduct from './Components/Products/AddProduct/AddProduct'
 import Auth from './Containers/Auth/Auth'
 import Logout from './Containers/Auth/Logout/Logout'
@@ -31,6 +32,7 @@ class App extends Component {
         <Route path="/about" component={About}/>
         <Route path="/contact" component={Contact}/>
         <Route path="/cart" component={Cart}/>
+        <Route path="/checkout" component={CheckoutPage}/>
         <Redirect to="/"/>
       </Switch>
     )
