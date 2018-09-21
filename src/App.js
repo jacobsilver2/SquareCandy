@@ -4,7 +4,8 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //! Components
-import Products from './Components/Products/Products';
+// import Products from './Components/Products/Products';
+import ProductsContainer from './Containers/ProductsContainer/ProductsContainer';
 import Layout from './hoc/Layout/Layout';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
@@ -27,7 +28,7 @@ class App extends Component {
     
     let routes = (
       <Switch>
-        <Route path="/" exact component={Products}/>
+        <Route path="/" exact component={ProductsContainer}/>
         <Route path="/auth" component={Auth}/>
         <Route path="/about" component={About}/>
         <Route path="/contact" component={Contact}/>
@@ -40,7 +41,7 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path="/" exact component={Products}/>
+          <Route path="/" exact component={ProductsContainer}/>
           <Route path="/logout" component={Logout}/>
           <Route path="/auth" component={Auth}/>
           <Route path="/about" component={About}/>

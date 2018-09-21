@@ -11,3 +11,8 @@ export {
     setAuthRedirectPath,
     authCheckState,
   } from './auth'
+
+export {
+    addToCart,
+    addToCartUnsafe
+} from './cart'

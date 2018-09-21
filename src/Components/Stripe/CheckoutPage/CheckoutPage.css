@@ -1,0 +1,10 @@
+  .Checkout {
+    margin: 0 auto;
+    max-width: 800px;
+    box-sizing: border-box;
+    /* padding: 0 5px; */
+    padding-top: .55rem;
+    padding-bottom: .50rem;
+  }
+
+  

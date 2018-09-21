@@ -36,11 +36,11 @@ class AddProduct extends Component {
       valid: false,
       touched: false,
       },
-      soldOut: {
-        elementType: 'checkbox',
+      inventory: {
+        elementType: 'input',
         elementConfig: {
-          type: 'checkbox',
-          placeholder: 'SOLD OUT'
+          type: 'number',
+          placeholder: 'INVENTORY'
         },
       value: '',
       validation: {
@@ -93,10 +93,9 @@ class AddProduct extends Component {
     const product = {
       name: this.state.controls.name.value,
       description: this.state.controls.description.value,
-      soldOut: this.state.controls.soldOut.value,
+      inventory: +this.state.controls.inventory.value,
       image: this.state.controls.image.value,
     }
-    console.log(product.image)
     this.props.onAddProduct(product, this.props.token);
     this.setState({added: true})
   }

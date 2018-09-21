@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import classes from './Product.css'
+import classes from './ProductItem.css'
 import Button from '../../UI/Button/Button';
 import Aux from '../../../hoc/Aux/Aux'
 import Modal from '../../UI/Modal/Modal';
 
-class Product extends Component {
+
+class ProductItem extends Component {
     state = { 
         clicked: false
      }
@@ -22,7 +23,8 @@ class Product extends Component {
     }
 
     render() {
-        let {name, description, image} = this.props
+        let {name, description, image} = this.props.product;
+        let {onAddToCartClicked} = this.props
         let style = { 
             backgroundImage: 'url(' + image + ')',
         };
@@ -35,7 +37,7 @@ class Product extends Component {
                 <div className={classes.cardbody}>
                     <h2>{name}</h2>
                     <p className={classes.bodycontent}>{description}</p>
-                    <Button btnType="Success">Add To Cart</Button>
+                    <Button clicked={onAddToCartClicked} btnType="Success">Add To Cart</Button>
                 </div>
             </article>
             </div> 
@@ -49,7 +51,7 @@ class Product extends Component {
                 <div className={classes.cardbody}>
                     <h2>{name}</h2>
                     <p className={classes.bodycontent}>{description}</p>
-                    <Button btnType="Success">CARD WAS CLICKED</Button>
+                    <Button clicked={onAddToCartClicked} btnType="Success">CARD WAS CLICKED</Button>
                 </div>
             </article>
             </div> 
@@ -68,4 +70,4 @@ class Product extends Component {
     }
 }
 
-export default Product;
+export default ProductItem;
