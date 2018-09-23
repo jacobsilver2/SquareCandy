@@ -24,6 +24,13 @@ const Input = (props) => {
         onChange={props.changed}
         />;
       break;
+    case ('number'):
+      inputElement = <input 
+        className={inputClasses.join(' ')}
+        value={props.value} {...props.elementConfig}
+        onchange={props.changed}
+        />;
+      break;
     case ('image'):
         inputElement = <FileField 
             label={props.elementConfig.placeholder}

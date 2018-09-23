@@ -93,7 +93,7 @@ class AddProduct extends Component {
     const product = {
       name: this.state.controls.name.value,
       description: this.state.controls.description.value,
-      inventory: +this.state.controls.inventory.value,
+      inventory: parseInt(this.state.controls.inventory.value, 10),
       image: this.state.controls.image.value,
     }
     this.props.onAddProduct(product, this.props.token);
