@@ -25,6 +25,10 @@ const editProduct = (state, action) => {
     return {...state, products}
 };
 
+export const getProduct = (state, id) => 
+    state.byId[id]
+
+
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_SQUARECANDY_PRODUCT_START: return updateObject(state, { loading: true })
