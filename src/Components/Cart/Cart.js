@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getTotal, getCartProducts } from '../../store/reducers/index';
 import { Redirect } from 'react-router-dom';
 import classes from './Cart.css';
 import Aux from '../../hoc/Aux/Aux';
@@ -25,13 +26,11 @@ class Cart extends Component {
         if (this.state.modal === false ) {
             return <Redirect to="/" />
         }
-        let cartItems = this.props.cart.addedIds[0];
-
-        
+        console.log(this.props.products)
 
         const clickedCart = (
             <div onClick={this.handleClose}>
-                <h1>{cartItems}</h1>
+                <h1>{this.props.products[0]}</h1>
             </div>
         )
 
@@ -47,7 +46,8 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
     return {
-        cart: state.cart
+        products: getCartProducts(state),
+        total: getTotal(state)
     }
 }
 

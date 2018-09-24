@@ -28,5 +28,3 @@ export const getCartProducts = state =>
     }))
 
 
-
-// todo: do we have a price on products state?

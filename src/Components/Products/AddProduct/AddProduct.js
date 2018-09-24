@@ -49,6 +49,19 @@ class AddProduct extends Component {
       valid: false,
       touched: false,
       },
+      price: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'number',
+          placeholder: 'PRICE'
+        },
+      value: '',
+      validation: {
+        required: true
+      },
+      valid: false,
+      touched: false,
+      },
       image: {
         elementType: 'image',
         elementConfig: {
@@ -94,6 +107,7 @@ class AddProduct extends Component {
       name: this.state.controls.name.value,
       description: this.state.controls.description.value,
       inventory: parseInt(this.state.controls.inventory.value, 10),
+      price: parseInt(this.state.controls.price.value, 10),
       image: this.state.controls.image.value,
     }
     this.props.onAddProduct(product, this.props.token);

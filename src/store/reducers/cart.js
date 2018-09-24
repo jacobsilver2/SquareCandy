@@ -6,7 +6,6 @@ const initialState = {
 }
 
 const addedIds = (state = initialState.addedIds, action) => {
-    console.log("made it to addedIds")
     switch (action.type) {
         case ADD_TO_CART:
             if (state.indexOf(action.productId) !== -1) {
@@ -18,7 +17,6 @@ const addedIds = (state = initialState.addedIds, action) => {
 }
 
 const quantityById = (state = initialState.quantityById, action) => {
-    console.log("made it to quantityById")
     switch (action.type) {
         case ADD_TO_CART:
             const { productId } = action;
@@ -31,7 +29,6 @@ const quantityById = (state = initialState.quantityById, action) => {
 }
 
 export const getQuantity = (state, productId) => {
-    console.log('made it here')
     return state.quantityById[productId] || 0
 }
 
@@ -39,7 +36,6 @@ export const getAddedIds = state => state.addedIds
 
 
 const cart = (state = initialState, action) => {
-    console.log("made it to cart")
     switch (action.type) {
         default:
         return {
