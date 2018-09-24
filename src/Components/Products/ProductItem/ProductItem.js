@@ -37,7 +37,7 @@ class ProductItem extends Component {
                 <div className={classes.cardbody}>
                     <h2>{name}</h2>
                     <p className={classes.bodycontent}>{description}</p>
-                    <Button clicked={onAddToCartClicked} btnType="Success">Add To Cart</Button>
+                    {/* <Button clicked={onAddToCartClicked} btnType="Success">Add To Cart</Button> */}
                 </div>
             </article>
             </div> 
@@ -51,7 +51,7 @@ class ProductItem extends Component {
                 <div className={classes.cardbody}>
                     <h2>{name}</h2>
                     <p className={classes.bodycontent}>{description}</p>
-                    <Button clicked={onAddToCartClicked} btnType="Success">CARD WAS CLICKED</Button>
+                    <Button clicked={onAddToCartClicked} btnType="Success">ADD TO CART</Button>
                 </div>
             </article>
             </div> 

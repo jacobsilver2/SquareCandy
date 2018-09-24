@@ -28,7 +28,6 @@ class Cart extends Component {
         }
         
         let clickedCart = null
-        console.log(this.props.products)
         if (this.props.products.length === 0) {
             clickedCart = (
                 <div>
