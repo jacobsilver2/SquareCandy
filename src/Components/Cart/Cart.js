@@ -26,13 +26,34 @@ class Cart extends Component {
         if (this.state.modal === false ) {
             return <Redirect to="/" />
         }
+        
+        let clickedCart = null
         console.log(this.props.products)
-
-        const clickedCart = (
-            <div onClick={this.handleClose}>
-                <h1>{this.props.products[0]}</h1>
-            </div>
-        )
+        if (this.props.products.length === 0) {
+            clickedCart = (
+                <div>
+                    <h1>There are currently no items in your cart</h1>
+                </div>
+            )
+        } else {
+            clickedCart = (
+                <div onClick={this.handleClose}>
+                    <table className={classes.tableFill}>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.products.map(product => <tr key={product.name}><td>{product.name}</td><td>{product.quantity}</td><td>${product.price}.00</td></tr>)}
+                        </tbody>
+                    </table>
+                    <h4>Total Price: {this.props.total}</h4>
+                </div>
+                )
+                }
 
         return (
             <Aux>

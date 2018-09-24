@@ -26,7 +26,8 @@ const editProduct = (state, action) => {
 };
 
 export const getProduct = (state, id) => 
-    state.byId[id]
+    state.products.filter(product => product.id === id)[0]
+
 
 
 const reducer = (state=initialState, action) => {
