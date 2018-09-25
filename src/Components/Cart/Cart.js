@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTotal, getCartProducts } from '../../store/reducers/index';
-import { REMOVE_FROM_CART } from '../../store/actions/actionTypes';
+import { removeFromCart } from '../../store/actions/index';
 import { Redirect } from 'react-router-dom';
-import classes from './Cart.css';
+import CartTable from './CartTable/CartTable';
 import Aux from '../../hoc/Aux/Aux';
 import Modal from '../UI/Modal/Modal';
 
@@ -33,38 +33,18 @@ class Cart extends Component {
         }
         
         let clickedCart = null
-        if (this.props.products.length === 0) {
+        if (this.props.cartItems.length === 0) {
             clickedCart = (
                 <div>
                     <h1>There are currently no items in your cart</h1>
                 </div>
             )
         } else {
-            clickedCart = (
-                <div onClick={this.handleClose}>
-                    <table className={classes.tableFill}>
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.products.map(product => 
-                            <tr key={product.id}>
-                                <td>{product.name}</td>
-                                <td>{product.quantity}</td>
-                                <td>${product.price}.00</td>
-                                <td><button onClick={() => this.props.removeHandler(product.id)}>REMOVE</button></td>
-                            </tr>
-                            )}
-                        </tbody>
-                    </table>
-                    <h4>Total Price: {this.props.total}</h4>
-                </div>
-                )
+            clickedCart = <CartTable 
+                cartItems={this.props.cartItems}
+                remove={removeFromCart}
+                total={this.props.total}
+            />
                 }
 
         return (
@@ -79,15 +59,11 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: getCartProducts(state),
+        cartItems: getCartProducts(state),
         total: getTotal(state)
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        removeHandler: id => dispatch({type: REMOVE_FROM_CART, productId: id})
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+
+export default connect(mapStateToProps, { removeFromCart })(Cart);

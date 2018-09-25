@@ -14,5 +14,7 @@ export {
 
 export {
     addToCart,
-    addToCartUnsafe
+    addToCartUnsafe,
+    removeFromCart,
+    removeFromCartUnsafe
 } from './cart'
