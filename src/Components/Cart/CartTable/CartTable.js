@@ -3,7 +3,7 @@ import classes from './CartTable.css';
 import CartItem from '../CartItem/CartItem';
 
 const cartTable = ({cartItems, remove, total}) => {
-
+    console.log(remove)
     const items = cartItems.map(item => {
         return <CartItem 
                     key={item.id}
@@ -11,7 +11,7 @@ const cartTable = ({cartItems, remove, total}) => {
                     name={item.name}
                     quantity={item.quantity}
                     price={item.price}
-                    remove={remove}
+                    remove={() => remove(item.id)}
                 />
     })
 

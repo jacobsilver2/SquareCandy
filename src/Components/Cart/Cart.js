@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTotal, getCartProducts } from '../../store/reducers/index';
-import { removeFromCart } from '../../store/actions/index';
+// import { removeFromCart } from '../../store/actions/index';
+import * as actions from '../../store/actions/index';
 import { Redirect } from 'react-router-dom';
 import CartTable from './CartTable/CartTable';
 import Aux from '../../hoc/Aux/Aux';
@@ -42,7 +43,7 @@ class Cart extends Component {
         } else {
             clickedCart = <CartTable 
                 cartItems={this.props.cartItems}
-                remove={removeFromCart}
+                remove={this.props.onItemRemoved}
                 total={this.props.total}
             />
                 }
@@ -64,6 +65,12 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        onItemRemoved: (productId) => dispatch(actions.removeFromCart(productId))
+    }
+}
 
 
-export default connect(mapStateToProps, { removeFromCart })(Cart);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

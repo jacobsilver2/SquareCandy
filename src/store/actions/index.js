@@ -2,7 +2,7 @@ export {
     addProduct,
     getProducts,
     deleteProduct,
-    editProduct
+    editProduct,
 } from './products'
 
 export {
@@ -16,5 +16,5 @@ export {
     addToCart,
     addToCartUnsafe,
     removeFromCart,
-    removeFromCartUnsafe
+    removeFromCartUnsafe,
 } from './cart'
