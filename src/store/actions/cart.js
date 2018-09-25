@@ -16,9 +16,10 @@ export const removeFromCartUnsafe = productId => (
 )
 
 export const removeFromCart = productId => (dispatch, getState) => {
-    console.log("got here");
+    if (getState().cart.quantityById[productId] > 0 ) {
+        dispatch(removeFromCartUnsafe(productId))
+    }
     // debugger;
-    dispatch(removeFromCartUnsafe(productId))
 }
 
 export const addToCart = productId => (dispatch, getState) => {

@@ -4,7 +4,7 @@ import CartItem from '../CartItem/CartItem';
 
 const cartTable = ({cartItems, remove, total}) => {
     console.log(remove)
-    const items = cartItems.map(item => {
+    const items = cartItems.filter(item => item.quantity > 0 ).map(item => {
         return <CartItem 
                     key={item.id}
                     id={item.id}
