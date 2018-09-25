@@ -21,3 +21,4 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const SET_AUTH_REDIRECT_PATH = 'SET_AUTH_REDIRECT_PATH';
 
 export const ADD_TO_CART = 'Add_To_Cart';
+export const REMOVE_FROM_CART = 'Remove_From_Cart';

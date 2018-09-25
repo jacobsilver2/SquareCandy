@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../actions/actionTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/actionTypes';
 
 const initialState = {
     addedIds: [],
@@ -19,10 +19,15 @@ const addedIds = (state = initialState.addedIds, action) => {
 const quantityById = (state = initialState.quantityById, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const { productId } = action;
+            let { productId } = action;
             return { ...state, 
                 [productId]: (state[productId] || 0 ) + 1
             }
+        case REMOVE_FROM_CART:
+              productId  = action.productId
+        return { ...state,
+            [productId]: (state[productId] || 0 ) - 1
+        }
         default: 
             return state;
     }

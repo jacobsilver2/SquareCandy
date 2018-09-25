@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTotal, getCartProducts } from '../../store/reducers/index';
+import { REMOVE_FROM_CART } from '../../store/actions/actionTypes';
 import { Redirect } from 'react-router-dom';
 import classes from './Cart.css';
 import Aux from '../../hoc/Aux/Aux';
@@ -20,6 +21,10 @@ class Cart extends Component {
     handleClose = () => {
         this.setState({ modal: false });
     }
+
+    // removeHandler = () => {
+    //     console.log("button was clicked")
+    // }
 
 
     render() {
@@ -43,10 +48,18 @@ class Cart extends Component {
                                 <th>Item</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.products.map(product => <tr key={product.name}><td>{product.name}</td><td>{product.quantity}</td><td>${product.price}.00</td></tr>)}
+                            {this.props.products.map(product => 
+                            <tr key={product.id}>
+                                <td>{product.name}</td>
+                                <td>{product.quantity}</td>
+                                <td>${product.price}.00</td>
+                                <td><button onClick={() => this.props.removeHandler(product.id)}>REMOVE</button></td>
+                            </tr>
+                            )}
                         </tbody>
                     </table>
                     <h4>Total Price: {this.props.total}</h4>
@@ -71,4 +84,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => {
+    return {
+        removeHandler: id => dispatch({type: REMOVE_FROM_CART, productId: id})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
