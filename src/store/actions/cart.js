@@ -15,11 +15,19 @@ export const removeFromCartUnsafe = productId => (
     }
 )
 
+export const deleteFromCart = productId => (
+    {
+        type: actionTypes.DELETE_FROM_CART,
+        productId
+    }
+)
+
 export const removeFromCart = productId => (dispatch, getState) => {
     if (getState().cart.quantityById[productId] > 0 ) {
         dispatch(removeFromCartUnsafe(productId))
+    // } else {
+    //     dispatch(deleteFromCart(productId))
     }
-    // debugger;
 }
 
 export const addToCart = productId => (dispatch, getState) => {

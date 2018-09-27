@@ -34,7 +34,8 @@ class Cart extends Component {
         }
         
         let clickedCart = null
-        if (this.props.cartItems.length === 0) {
+        if (Math.floor(this.props.total) === 0) {
+            
             clickedCart = (
                 <div>
                     <h1>There are currently no items in your cart</h1>

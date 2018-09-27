@@ -22,3 +22,4 @@ export const SET_AUTH_REDIRECT_PATH = 'SET_AUTH_REDIRECT_PATH';
 
 export const ADD_TO_CART = 'Add_To_Cart';
 export const REMOVE_FROM_CART = 'Remove_From_Cart';
+export const DELETE_FROM_CART = 'Delete_From_Cart';

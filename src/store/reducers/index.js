@@ -22,7 +22,7 @@ export const getTotal = state =>
      .toFixed(2)
 
 export const getCartProducts = state => {
-
+    
     const addedIds = getAddedIds(state).map(id => ({
         ...getProduct(state, id),
         quantity: getQuantity(state, id)
