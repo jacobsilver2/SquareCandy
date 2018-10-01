@@ -17,6 +17,7 @@ import Logout from './Containers/Auth/Logout/Logout'
 
 //! Actions
 import * as actions from './store/actions/index';
+import { getTotal, getCartProducts } from './store/reducers';
 
 //! ────────────────────────────────────────────────────────────────────────────────
 class App extends Component {
@@ -53,7 +54,11 @@ class App extends Component {
 
     return (
       <div>
-        <Layout>
+        <Layout 
+          isAuthenticated={this.props.isAuthenticated} 
+          cartQuantity={this.props.cartQuantity} 
+          total={this.props.total}
+        >
           {routes}
         </Layout>
       </div>
@@ -64,13 +69,16 @@ class App extends Component {
 //! ─── REDUX ──────────────────────────────────────────────────────────────────────
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    cartQuantity: getCartProducts(state).reduce((acc, item) => acc + item.quantity, 0),
+    total: getTotal(state)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignUp: () => dispatch(actions.authCheckState())
+    onTryAutoSignUp: () => dispatch(actions.authCheckState()),
+
   }
 }
 
