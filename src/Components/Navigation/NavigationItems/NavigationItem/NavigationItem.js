@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import classes from './NavigationItem.css';
 import { NavLink } from 'react-router-dom';
-import {Toggle} from 'utilities';
-import {Modal} from 'elements';
+// import {Toggle} from 'utilities';
+// import {Modal} from 'elements';
 
 class NavigationItem extends Component {
     
@@ -11,7 +11,7 @@ class NavigationItem extends Component {
         return (
             <li className={classes.NavigationItem}>
             <NavLink exact to={{pathname:link}} activeClassName={classes.active}>
-                {this.props.children}
+                {children}
             </NavLink>
         </li>
         );
