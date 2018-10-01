@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getTotal, getCartProducts } from '../../store/reducers/index';
 // import { removeFromCart } from '../../store/actions/index';
 import * as actions from '../../store/actions/index';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import CartTable from './CartTable/CartTable';
-import Aux from '../../hoc/Aux/Aux';
-import Modal from '../UI/Modal/Modal';
+// import Aux from '../../hoc/Aux/Aux';
+// import Modal from '../UI/Modal/Modal';
+import {Toggle} from 'Utilities';
+import {Modal} from 'Elements';
 
 class Cart extends Component {
     state = { modal: true }
 
-    componentDidMount() {
-        const { state = {} } = this.props.location;
-        const { modal } = state;
-        this.setState({
-            modal
-        })
-    }
+    // componentDidMount() {
+    //     const { state = {} } = this.props.location;
+    //     const { modal } = state;
+    //     this.setState({
+    //         modal
+    //     })
+    // }
 
-    handleClose = () => {
-        this.setState({ modal: false });
-    }
+    // handleClose = () => {
+    //     this.setState({ modal: false });
+    // }
 
     // removeHandler = () => {
     //     console.log("button was clicked")
@@ -29,9 +31,9 @@ class Cart extends Component {
 
 
     render() {
-        if (this.state.modal === false ) {
-            return <Redirect to="/" />
-        }
+        // if (this.state.modal === false ) {
+        //     return <Redirect to="/" />
+        // }
         
         let clickedCart = null
         if (Math.floor(this.props.total) === 0) {
@@ -50,11 +52,15 @@ class Cart extends Component {
                 }
 
         return (
-            <Aux>
-                <Modal show={this.state.modal} modalClosed={this.handleClose}>
+            <Toggle>
+            {({on, toggle}) => (
+                <Fragment>
+                <Modal on={!on} toggle={toggle}>
                     {clickedCart}
                 </Modal>
-            </Aux>
+            </Fragment>
+            )}
+        </Toggle>
         );
     }
 }
