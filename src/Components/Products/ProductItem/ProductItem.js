@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classes from './ProductItem.css'
 import Button from '../../UI/Button/Button';
 import Aux from '../../../hoc/Aux/Aux'
-import Modal from '../../UI/Modal/Modal';
+// import Modal from '../../UI/Modal/Modal';
+import {Toggle} from 'Utilities';
+import {Modal} from 'Elements';
 
 
 class ProductItem extends Component {
@@ -10,17 +12,7 @@ class ProductItem extends Component {
         clicked: false
      }
 
-    handleClick = () => {
-        this.setState({
-            clicked: true
-        });
-    }
 
-    handleUnclick = () => {
-        this.setState({
-            clicked: false
-        });
-    }
 
     render() {
         let {name, description, image} = this.props.product;
@@ -30,7 +22,7 @@ class ProductItem extends Component {
         };
 
         const unClickedCard = (
-            <div className={classes.card} onClick={this.handleClick}>
+            <div className={classes.card}>
             <article>
                 <header style={style} id={image} className={classes.cardheader}>
                 </header>
@@ -44,13 +36,13 @@ class ProductItem extends Component {
         )
 
         const clickedCard = (
-            <div className={classes.card} onClick={this.handleClick}>
+            <div >
             <article>
-                <header style={style} id={image} className={classes.cardheader}>
+                <header id={image}><img src={image} alt=""/>
                 </header>
-                <div className={classes.cardbody}>
+                <div>
                     <h2>{name}</h2>
-                    <p className={classes.bodycontent}>{description}</p>
+                    <p>{description}</p>
                     <Button clicked={onAddToCartClicked} btnType="Success">ADD TO CART</Button>
                 </div>
             </article>
@@ -60,12 +52,17 @@ class ProductItem extends Component {
         
 
         return (
-            <Aux>
-                <Modal show={this.state.clicked} modalClosed={this.handleUnclick}>
-                    {clickedCard}
+            <Toggle>
+            {({on, toggle}) => (
+              <Fragment>
+                <div onClick={toggle}>{unClickedCard}</div>
+                <Modal on={on} toggle={toggle}>
+                  {clickedCard}
                 </Modal>
-                {unClickedCard}
-            </Aux>
+              </Fragment>
+  
+            )}
+          </Toggle> 
         );
     }
 }

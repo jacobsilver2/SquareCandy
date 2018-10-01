@@ -36,11 +36,11 @@ class Contact extends Component {
         return (
             <Toggle>
                 {({on, toggle}) => (
-                    <Fragment>
+                    <div onClick={toggle}>
                     <Modal on={!on} toggle={toggle}>
                         <h1>Contact Page</h1>
                     </Modal>
-                </Fragment>
+                    </div>
                 )}
             </Toggle>
         );
