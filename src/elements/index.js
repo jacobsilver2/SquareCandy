@@ -1,5 +1,5 @@
-import Icon from './icon';
+import Icon from './Icon';
 import Modal from './Modal';
 
 export * from './Cards';
-export {Icon, Modal}
+export { Icon, Modal };
