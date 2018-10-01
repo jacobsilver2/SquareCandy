@@ -56,6 +56,7 @@ class ProductItem extends Component {
             {({on, toggle}) => (
               <Fragment>
                 <div onClick={toggle}>{unClickedCard}</div>
+
                 <Modal on={on} toggle={toggle}>
                   {clickedCard}
                 </Modal>
@@ -66,5 +67,6 @@ class ProductItem extends Component {
         );
     }
 }
+
 
 export default ProductItem;

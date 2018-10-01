@@ -34,15 +34,7 @@ class Contact extends Component {
         // )
 
         return (
-            <Toggle>
-                {({on, toggle}) => (
-                    <div onClick={toggle}>
-                    <Modal on={!on} toggle={toggle}>
-                        <h1>Contact Page</h1>
-                    </Modal>
-                    </div>
-                )}
-            </Toggle>
+            <h1>Contact Page</h1>
         );
     }
 }

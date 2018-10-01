@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {ModalContainer, ModalRoute} from 'react-router-modal'
 
 //! Components
 // import Products from './Components/Products/Products';
@@ -14,6 +15,7 @@ import CheckoutPage from './Components/Stripe/CheckoutPage/CheckoutPage'
 import AddProduct from './Components/Products/AddProduct/AddProduct'
 import Auth from './Containers/Auth/Auth'
 import Logout from './Containers/Auth/Logout/Logout'
+import 'react-router-modal/css/react-router-modal.css'
 
 //! Actions
 import * as actions from './store/actions/index';
@@ -31,8 +33,8 @@ class App extends Component {
       <Switch>
         <Route path="/" exact component={ProductsContainer}/>
         <Route path="/auth" component={Auth}/>
-        <Route path="/about" component={About}/>
-        <Route path="/contact" component={Contact}/>
+        <ModalRoute path="/about" component={About}/>
+        <ModalRoute path="/contact" component={Contact}/>
         <Route path="/cart" component={Cart}/>
         <Route path="/checkout" component={CheckoutPage}/>
         <Redirect to="/"/>
@@ -61,6 +63,7 @@ class App extends Component {
         >
           {routes}
         </Layout>
+        <ModalContainer />
       </div>
     );
   }
